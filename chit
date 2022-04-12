@@ -1,0 +1,38 @@
+function onEdit(e)
+{
+  stepuponedit(e);
+  updatetimestamp(e) ;
+  updateTotal(e)
+}
+
+
+
+
+
+function updateTotal(e) {
+  var startrow = 2;
+  var editcolum = 16; 
+  var modicolumn = 14; 
+
+  var row = e.range.getRow(); 
+  var col = e.range.getColumn(); 
+ 
+  if (col === editcolum && row >= startrow )
+  {
+    var lastpaidval = e.source.getActiveSheet().getRange(row,editcolum).getValue();
+    var totalpaidval = e.source.getActiveSheet().getRange(row,modicolumn).getValue();
+    e.source.getActiveSheet().getRange(row, modicolumn).setValue(lastpaidval + totalpaidval);
+  }
+}
+
+
+
+function stepuponedit(e) {
+  var startrow = 2;
+  var editcolum = 16; 
+  var modicolumn = 12; 
+
+  var row = e.range.getRow(); 
+  var col = e.range.getColumn(); 
+ 
+  if (col === editcolum && row >= st…
